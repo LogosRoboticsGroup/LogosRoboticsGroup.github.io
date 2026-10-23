@@ -1,0 +1,175 @@
+/* Live, selectable vector versions of the paper's two method figures. */
+.vector-figure, .pipeline-overview {
+  --diagram-context: #d5e2cd;
+  --diagram-action: #afd1dc;
+  --diagram-generation: #f3efe3;
+  --diagram-forward: #596b65;
+  --diagram-feedback: #24677d;
+  --diagram-conditioning: #82728e;
+  text-align: left;
+}
+
+.diagram-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  min-height: 44px;
+  margin-bottom: 24px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.diagram-legend { display: inline-flex; align-items: center; gap: 12px; }
+.legend-arrow { position: relative; width: 30px; border-top: 2px solid var(--diagram-forward); }
+.legend-arrow::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -4px;
+  width: 6px;
+  height: 6px;
+  border-top: 2px solid var(--diagram-forward);
+  border-right: 2px solid var(--diagram-forward);
+  transform: rotate(45deg);
+}
+
+.diagram-playback {
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--green);
+  font-size: 12px;
+}
+.diagram-playback:hover { background: var(--sage); }
+
+.pipeline-overview { --diagram-forward: var(--green); }
+.pipeline-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-bottom: 32px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #b8c6b8;
+}
+.pipeline-toolbar .mode-controls { margin-bottom: 0; border-bottom: 0; }
+.pipeline-toolbar .diagram-playback { margin-left: auto; border-color: #b8c6b8; }
+.pipeline-overview .backprop-edge { --flow-color: var(--diagram-feedback); }
+.pipeline-overview .supervision-path { color: var(--diagram-feedback); }
+.pipeline-display[data-mode="inference"] :is(.generation-path, .supervision-path) .flow-pulse {
+  animation-play-state: paused;
+  opacity: 0;
+}
+
+.architecture-grid { display: grid; grid-template-columns: 1fr 1fr 1.3fr; gap: 16px; }
+.architecture-panel { min-width: 0; padding-top: 20px; background: #f7f8f5; border-radius: 12px; }
+.architecture-panel h3 { color: var(--ink); font-size: 24px; font-weight: 600; text-align: center; }
+.architecture-panel h3 span { color: var(--muted); font-size: 16px; font-weight: 400; margin-right: 6px; }
+.architecture-panel > p { margin: 5px 8px 12px; font-size: 13px; color: var(--muted); text-align: center; }
+.architecture-fdm { background: #f0f5ef; }
+.architecture-fdm h3 { color: var(--green); }
+.architecture-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.vla-diagram { --arrow-head: url(#vla-arrow); }
+.wam-diagram { --arrow-head: url(#wam-arrow); }
+.fdm-diagram { --arrow-head: url(#fdm-arrow); }
+
+.vector-figure svg { stroke-width: 1.5; }
+.vector-figure svg text {
+  fill: var(--ink);
+  stroke: none;
+  font-family: 'DM Sans', sans-serif;
+  text-anchor: middle;
+}
+.vector-figure .node-label { font-size: 22px; font-weight: 500; }
+.vector-figure .node-detail { font-size: 16px; }
+.vector-figure .generation-label { font-size: 20px; }
+.vector-figure .node-visual, .vector-figure .visual-tokens { fill: #edf2e2; stroke: #8a9f79; }
+.vector-figure .node-language, .vector-figure .language-tokens { fill: #fff0c1; stroke: #b39b59; }
+.vector-figure .node-context { fill: var(--diagram-context); stroke: #8a9f79; }
+.vector-figure .node-action, .vector-figure .noised-tokens { fill: var(--diagram-action); stroke: #6c9eab; }
+.vector-figure .node-generation, .vector-figure .future-frames { fill: var(--diagram-generation); stroke: #b4aa8c; }
+.vector-figure .node-backbone { fill: none; stroke: #9ea889; }
+.fdm-diagram .node-backbone { fill: url(#fdm-backbone-fill); }
+.fdm-diagram .backbone-context { stop-color: var(--diagram-context); }
+.fdm-diagram .backbone-generation { stop-color: var(--diagram-generation); }
+.vector-figure .action-tokens { fill: #d5f1f5; stroke: #80b4c1; }
+.vector-figure .future-tokens { fill: #e8dfc4; stroke: none; }
+.vector-figure .ground-truth-tokens { fill: #c7b98c; stroke: none; }
+.vector-figure .training-boundary { fill: none; stroke: #aa9e7d; stroke-dasharray: 5 6; }
+.vector-figure .training-label { fill: var(--diagram-feedback); font-size: 18px; font-weight: 600; }
+
+/* Arrowheads stay visible; the travelling marks follow the same directed paths. */
+.diagram-edge { --flow-color: var(--diagram-forward); fill: none; stroke: var(--flow-color); }
+.conditioning-edge { --flow-color: var(--diagram-conditioning); }
+.diagram-edge .edge-track { stroke-width: 1.8; marker-end: var(--arrow-head); }
+.vector-figure marker { fill: var(--diagram-forward); stroke: none; }
+.diagram-edge .flow-pulse {
+  opacity: 0;
+  stroke-width: 3;
+  stroke-dasharray: 5 19;
+  animation: diagram-flow 1.2s linear infinite;
+  animation-play-state: paused;
+}
+[data-flow-state="running"] .flow-pulse { opacity: 1; animation-play-state: running; }
+[data-flow-state="running"] .edge-track { stroke-opacity: .5; }
+@keyframes diagram-flow { to { stroke-dashoffset: -24; } }
+
+.technical-figure > summary { text-align: left; }
+.diagram-scroll { overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-width: thin; }
+.diagram-scroll:focus-visible { outline: 3px solid var(--green); outline-offset: 5px; }
+.diagram-scroll-hint { display: none; color: var(--muted); font-size: 12px; margin-bottom: 16px; }
+.mot-diagram { --arrow-head: url(#mot-forward-arrow); display: block; width: 100%; min-width: 960px; height: auto; }
+.mot-diagram .diagram-heading { text-anchor: start; font-size: 24px; font-weight: 600; }
+.mot-diagram .diagram-note { text-anchor: start; font-size: 18px; }
+.mot-diagram .node-label { font-size: 24px; }
+.mot-diagram .node-detail { font-size: 19px; }
+.mot-diagram :is(.action-tokens, .noised-tokens, .visual-tokens, .language-tokens) { stroke: none; }
+.mot-diagram .label-ground { fill: var(--white); stroke: none; }
+.mot-diagram .attention-band, .mot-diagram .loss-node { fill: #fbe9e5; stroke: none; }
+.mot-diagram .injection-band { fill: #e2dce8; stroke: none; }
+.mot-diagram .injection-label { font-size: 16px; font-weight: 500; }
+.mot-diagram .loss-label { font: italic 26px Georgia, serif; }
+.mot-diagram .backprop-edge { --flow-color: var(--diagram-feedback); --arrow-head: url(#mot-feedback-arrow); }
+.mot-diagram #mot-feedback-arrow { fill: var(--diagram-feedback); }
+.mot-diagram .feedback-label { fill: var(--diagram-feedback); font-size: 19px; font-weight: 500; }
+.mot-diagram .backprop-edge .edge-track { stroke-width: 2.3; }
+.mot-diagram .diagram-edge:not(.backprop-edge) .edge-track { stroke-dasharray: 5 4; }
+.mot-diagram .legend-text { font-size: 16px; text-anchor: start; }
+.mot-diagram .legend-forward { stroke: var(--diagram-forward); stroke-width: 1.8; stroke-dasharray: 5 4; marker-end: url(#mot-forward-arrow); }
+.mot-diagram .legend-backprop { stroke: var(--diagram-feedback); stroke-width: 2; marker-end: url(#mot-feedback-arrow); }
+.mot-diagram .inference-boundary { fill: #f7f8f5; stroke: #aab6aa; stroke-dasharray: 5 6; }
+.mot-diagram .inference-only .node-detail { font-size: 17px; fill: var(--muted); }
+.mot-diagram .inference-only { display: none; }
+[data-mode="inference"] .mot-diagram .training-only { display: none; }
+[data-mode="inference"] .mot-diagram .inference-only { display: inline; }
+
+@media (max-width: 1100px) {
+  .diagram-scroll-hint { display: block; }
+}
+@media (max-width: 900px) {
+  .architecture-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .architecture-fdm { grid-column: 1 / -1; }
+  .architecture-svg { max-width: 340px; margin-inline: auto; }
+  .fdm-diagram { max-width: 442px; }
+}
+@media (max-width: 600px) {
+  .architecture-grid { grid-template-columns: 1fr; gap: 20px; }
+  .architecture-fdm { grid-column: auto; }
+  .architecture-panel h3 { font-size: 23px; }
+  .architecture-panel > p { font-size: 13px; }
+  .vector-figure { padding: 16px; }
+  .vector-figure figcaption { line-height: 1.7; }
+  .diagram-toolbar { margin-bottom: 18px; font-size: 12px; }
+  .architecture-svg .node-detail { font-size: 18px; }
+  .fdm-diagram .node-label { font-size: 25px; }
+  .fdm-diagram .generation-label { font-size: 22px; }
+  .fdm-diagram .node-detail { font-size: 20px; }
+  .fdm-diagram .training-label { font-size: 21px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .diagram-edge .flow-pulse, .diagram-playback { display: none; }
+}

@@ -1,0 +1,728 @@
+{
+  "source": "https://arxiv.org/abs/2610.13117",
+  "provenance": "Transcribed from Tables 2–5 and Figure 5; verified against the published paper on 2026-10-13. Values retain the reported precision; differences in the interactive success charts are percentage-point differences.",
+  "datasets": {
+    "real": {
+      "label": "Real robot",
+      "title": "Five tasks on a real robot",
+      "source": "Figure 5",
+      "href": "https://arxiv.org/pdf/2610.13117#page=8",
+      "defaultMetric": "average",
+      "note": "Dual-arm ARX-X5 · 20 trials per method per task · averages across five tasks.",
+      "metrics": [
+        {
+          "key": "drawer",
+          "label": "Drawer packing",
+          "digits": 0,
+          "unit": "%",
+          "max": 100,
+          "higher": true
+        },
+        {
+          "key": "box",
+          "label": "Box packing",
+          "digits": 0,
+          "unit": "%",
+          "max": 100,
+          "higher": true
+        },
+        {
+          "key": "shuttlecock",
+          "label": "Shuttlecock insertion",
+          "digits": 0,
+          "unit": "%",
+          "max": 100,
+          "higher": true
+        },
+        {
+          "key": "cup",
+          "label": "Cup stacking",
+          "digits": 0,
+          "unit": "%",
+          "max": 100,
+          "higher": true
+        },
+        {
+          "key": "block",
+          "label": "Block stacking",
+          "digits": 0,
+          "unit": "%",
+          "max": 100,
+          "higher": true
+        },
+        {
+          "key": "average",
+          "label": "Average",
+          "digits": 0,
+          "unit": "%",
+          "max": 100,
+          "higher": true
+        }
+      ],
+      "rows": [
+        {
+          "name": "π₀",
+          "family": "vlm",
+          "values": {
+            "drawer": 60,
+            "box": 65,
+            "shuttlecock": 55,
+            "cup": 80,
+            "block": 75,
+            "average": 67
+          },
+          "detail": "VLA baseline",
+          "ours": false
+        },
+        {
+          "name": "π₀.₅",
+          "family": "vlm",
+          "values": {
+            "drawer": 75,
+            "box": 80,
+            "shuttlecock": 75,
+            "cup": 95,
+            "block": 90,
+            "average": 83
+          },
+          "detail": "VLA baseline",
+          "ours": false
+        },
+        {
+          "name": "FDM w/ VLM",
+          "family": "vlm",
+          "values": {
+            "drawer": 95,
+            "box": 95,
+            "shuttlecock": 90,
+            "cup": 100,
+            "block": 100,
+            "average": 96
+          },
+          "detail": "Our model",
+          "ours": true
+        },
+        {
+          "name": "DreamZero",
+          "family": "vgm",
+          "values": {
+            "drawer": 65,
+            "box": 70,
+            "shuttlecock": 65,
+            "cup": 75,
+            "block": 80,
+            "average": 71
+          },
+          "detail": "WAM baseline",
+          "ours": false
+        },
+        {
+          "name": "FastWAM-Joint",
+          "family": "vgm",
+          "values": {
+            "drawer": 70,
+            "box": 70,
+            "shuttlecock": 75,
+            "cup": 90,
+            "block": 85,
+            "average": 78
+          },
+          "detail": "Future-conditioned WAM",
+          "ours": false
+        },
+        {
+          "name": "FDM w/ VGM",
+          "family": "vgm",
+          "values": {
+            "drawer": 70,
+            "box": 75,
+            "shuttlecock": 70,
+            "cup": 100,
+            "block": 100,
+            "average": 83
+          },
+          "detail": "Our model",
+          "ours": true
+        }
+      ]
+    },
+    "libero": {
+      "label": "LIBERO",
+      "title": "Four suites of manipulation tasks",
+      "source": "Table 2",
+      "href": "https://arxiv.org/pdf/2610.13117#page=6",
+      "defaultMetric": "average",
+      "note": "Spatial, Object, Goal and Long suites. P.T. denotes robot policy pretraining; both FDM variants use no robot policy pretraining.",
+      "metrics": [
+        {
+          "key": "spatial",
+          "label": "Spatial",
+          "digits": 1,
+          "unit": "%",
+          "max": 100,
+          "higher": true
+        },
+        {
+          "key": "object",
+          "label": "Object",
+          "digits": 1,
+          "unit": "%",
+          "max": 100,
+          "higher": true
+        },
+        {
+          "key": "goal",
+          "label": "Goal",
+          "digits": 1,
+          "unit": "%",
+          "max": 100,
+          "higher": true
+        },
+        {
+          "key": "long",
+          "label": "Long",
+          "digits": 1,
+          "unit": "%",
+          "max": 100,
+          "higher": true
+        },
+        {
+          "key": "average",
+          "label": "Average",
+          "digits": 1,
+          "unit": "%",
+          "max": 100,
+          "higher": true
+        }
+      ],
+      "rows": [
+        {
+          "name": "π₀",
+          "family": "vlm",
+          "values": {
+            "spatial": 96.8,
+            "object": 98.8,
+            "goal": 95.8,
+            "long": 85.2,
+            "average": 94.1
+          },
+          "detail": "With robot policy pretraining",
+          "ours": false
+        },
+        {
+          "name": "π₀.₅",
+          "family": "vlm",
+          "values": {
+            "spatial": 98.8,
+            "object": 98.2,
+            "goal": 98.0,
+            "long": 92.4,
+            "average": 96.9
+          },
+          "detail": "With robot policy pretraining",
+          "ours": false
+        },
+        {
+          "name": "FDM w/ VLM",
+          "family": "vlm",
+          "values": {
+            "spatial": 99.2,
+            "object": 100,
+            "goal": 99.8,
+            "long": 98.6,
+            "average": 99.4
+          },
+          "detail": "Without robot policy pretraining",
+          "ours": true
+        },
+        {
+          "name": "Motus",
+          "family": "vgm",
+          "values": {
+            "spatial": 96.8,
+            "object": 99.8,
+            "goal": 96.6,
+            "long": 97.6,
+            "average": 97.7
+          },
+          "detail": "With robot policy pretraining",
+          "ours": false
+        },
+        {
+          "name": "LingBot-VA",
+          "family": "vgm",
+          "values": {
+            "spatial": 98.5,
+            "object": 99.6,
+            "goal": 97.2,
+            "long": 98.5,
+            "average": 98.5
+          },
+          "detail": "With robot policy pretraining",
+          "ours": false
+        },
+        {
+          "name": "FDM w/ VGM",
+          "family": "vgm",
+          "values": {
+            "spatial": 98.8,
+            "object": 100,
+            "goal": 99.2,
+            "long": 94.2,
+            "average": 98.1
+          },
+          "detail": "Without robot policy pretraining",
+          "ours": true
+        }
+      ]
+    },
+    "robotwin": {
+      "label": "RoboTwin 2.0",
+      "title": "Bimanual manipulation across 50 tasks",
+      "source": "Table 3",
+      "href": "https://arxiv.org/pdf/2610.13117#page=6",
+      "defaultMetric": "average",
+      "note": "50 tasks · clean and randomized conditions receive equal weight in the average · both FDM variants use no robot policy pretraining.",
+      "metrics": [
+        {
+          "key": "clean",
+          "label": "Clean",
+          "digits": 2,
+          "unit": "%",
+          "max": 100,
+          "higher": true
+        },
+        {
+          "key": "randomized",
+          "label": "Randomized",
+          "digits": 2,
+          "unit": "%",
+          "max": 100,
+          "higher": true
+        },
+        {
+          "key": "average",
+          "label": "Average",
+          "digits": 2,
+          "unit": "%",
+          "max": 100,
+          "higher": true
+        }
+      ],
+      "rows": [
+        {
+          "name": "π₀",
+          "family": "vlm",
+          "values": {
+            "clean": 65.92,
+            "randomized": 58.4,
+            "average": 62.16
+          },
+          "detail": "With robot policy pretraining",
+          "ours": false
+        },
+        {
+          "name": "π₀.₅",
+          "family": "vlm",
+          "values": {
+            "clean": 82.74,
+            "randomized": 76.76,
+            "average": 79.75
+          },
+          "detail": "With robot policy pretraining",
+          "ours": false
+        },
+        {
+          "name": "FDM w/ VLM",
+          "family": "vlm",
+          "values": {
+            "clean": 81.54,
+            "randomized": 80.86,
+            "average": 81.2
+          },
+          "detail": "Without robot policy pretraining",
+          "ours": true
+        },
+        {
+          "name": "Motus",
+          "family": "vgm",
+          "values": {
+            "clean": 88.66,
+            "randomized": 87.02,
+            "average": 87.8
+          },
+          "detail": "With robot policy pretraining",
+          "ours": false
+        },
+        {
+          "name": "LingBot-VA",
+          "family": "vgm",
+          "values": {
+            "clean": 92.9,
+            "randomized": 91.5,
+            "average": 92.2
+          },
+          "detail": "With robot policy pretraining",
+          "ours": false
+        },
+        {
+          "name": "FDM w/ VGM",
+          "family": "vgm",
+          "values": {
+            "clean": 88.84,
+            "randomized": 89.62,
+            "average": 89.23
+          },
+          "detail": "Without robot policy pretraining",
+          "ours": true
+        }
+      ]
+    },
+    "ablations": {
+      "label": "Ablations",
+      "title": "Isolate the contribution of future gradients",
+      "source": "Table 4",
+      "href": "https://arxiv.org/pdf/2610.13117#page=8",
+      "defaultMetric": "average",
+      "note": "Matched training settings and seeds within each backbone. All variants deploy with action-only inference. Full FDM versus stop-gradient isolates backward supervision.",
+      "metrics": [
+        {
+          "key": "drawer",
+          "label": "Drawer packing",
+          "digits": 0,
+          "unit": "%",
+          "max": 100,
+          "higher": true
+        },
+        {
+          "key": "box",
+          "label": "Box packing",
+          "digits": 0,
+          "unit": "%",
+          "max": 100,
+          "higher": true
+        },
+        {
+          "key": "shuttlecock",
+          "label": "Shuttlecock insertion",
+          "digits": 0,
+          "unit": "%",
+          "max": 100,
+          "higher": true
+        },
+        {
+          "key": "cup",
+          "label": "Cup stacking",
+          "digits": 0,
+          "unit": "%",
+          "max": 100,
+          "higher": true
+        },
+        {
+          "key": "block",
+          "label": "Block stacking",
+          "digits": 0,
+          "unit": "%",
+          "max": 100,
+          "higher": true
+        },
+        {
+          "key": "average",
+          "label": "Average",
+          "digits": 0,
+          "unit": "%",
+          "max": 100,
+          "higher": true
+        }
+      ],
+      "rows": [
+        {
+          "name": "A. Action-only",
+          "family": "vlm",
+          "values": {
+            "drawer": 75,
+            "box": 80,
+            "shuttlecock": 75,
+            "cup": 95,
+            "block": 90,
+            "average": 83
+          },
+          "detail": "Action imitation only",
+          "ours": false
+        },
+        {
+          "name": "B. Context-only future",
+          "family": "vlm",
+          "values": {
+            "drawer": 85,
+            "box": 80,
+            "shuttlecock": 80,
+            "cup": 95,
+            "block": 95,
+            "average": 87
+          },
+          "detail": "Future objective, without action features",
+          "ours": false
+        },
+        {
+          "name": "C. Stop-gradient",
+          "family": "vlm",
+          "values": {
+            "drawer": 80,
+            "box": 85,
+            "shuttlecock": 85,
+            "cup": 95,
+            "block": 100,
+            "average": 89
+          },
+          "detail": "Action features, with future gradients stopped",
+          "ours": false
+        },
+        {
+          "name": "D. Full FDM",
+          "family": "vlm",
+          "values": {
+            "drawer": 95,
+            "box": 95,
+            "shuttlecock": 90,
+            "cup": 100,
+            "block": 100,
+            "average": 96
+          },
+          "detail": "Action features + future-loss gradients",
+          "ours": true
+        },
+        {
+          "name": "A. Action-only",
+          "family": "vgm",
+          "values": {
+            "drawer": 50,
+            "box": 60,
+            "shuttlecock": 55,
+            "cup": 85,
+            "block": 80,
+            "average": 66
+          },
+          "detail": "Action imitation only",
+          "ours": false
+        },
+        {
+          "name": "B. Context-only future",
+          "family": "vgm",
+          "values": {
+            "drawer": 60,
+            "box": 65,
+            "shuttlecock": 55,
+            "cup": 90,
+            "block": 90,
+            "average": 72
+          },
+          "detail": "Future objective, without action features",
+          "ours": false
+        },
+        {
+          "name": "C. Stop-gradient",
+          "family": "vgm",
+          "values": {
+            "drawer": 70,
+            "box": 70,
+            "shuttlecock": 65,
+            "cup": 90,
+            "block": 95,
+            "average": 78
+          },
+          "detail": "Action features, with future gradients stopped",
+          "ours": false
+        },
+        {
+          "name": "D. Full FDM",
+          "family": "vgm",
+          "values": {
+            "drawer": 70,
+            "box": 75,
+            "shuttlecock": 70,
+            "cup": 100,
+            "block": 100,
+            "average": 83
+          },
+          "detail": "Action features + future-loss gradients",
+          "ours": true
+        }
+      ]
+    },
+    "efficiency": {
+      "label": "Efficiency",
+      "title": "Future supervision at training, action-only at inference",
+      "source": "Table 5",
+      "href": "https://arxiv.org/pdf/2610.13117#page=10",
+      "defaultMetric": "latency",
+      "note": "Matched comparisons within each backbone family. Training uses 8 H100 GPUs; inference latency is measured on 1 H100, per action chunk.",
+      "metrics": [
+        {
+          "key": "latency",
+          "label": "Inference latency",
+          "unit": "ms/chunk",
+          "digits": 2,
+          "max": 500,
+          "higher": false
+        },
+        {
+          "key": "step",
+          "label": "Training step time",
+          "unit": "s/step",
+          "digits": 4,
+          "max": 1,
+          "higher": false
+        },
+        {
+          "key": "throughput",
+          "label": "Training throughput",
+          "unit": "samples/s",
+          "digits": 2,
+          "max": 300,
+          "higher": true
+        },
+        {
+          "key": "memory",
+          "label": "Peak training memory",
+          "unit": "GiB/GPU",
+          "digits": 2,
+          "max": 80,
+          "higher": false
+        }
+      ],
+      "rows": [
+        {
+          "name": "π₀.₅",
+          "family": "vlm",
+          "values": {
+            "latency": 203.77,
+            "step": 0.4436,
+            "throughput": 288.58,
+            "memory": 67.08,
+            "overhead": null,
+            "speedup": 1,
+            "reduction": 0
+          },
+          "detail": "Matched baseline",
+          "ours": false
+        },
+        {
+          "name": "FDM w/ VLM",
+          "family": "vlm",
+          "values": {
+            "latency": 202.98,
+            "step": 0.6305,
+            "throughput": 203.01,
+            "memory": 72.04,
+            "overhead": 42.14,
+            "speedup": 1,
+            "reduction": 0.39
+          },
+          "detail": "Our model",
+          "ours": true
+        },
+        {
+          "name": "FastWAM-Joint",
+          "family": "vgm",
+          "values": {
+            "latency": 446.55,
+            "step": 0.9754,
+            "throughput": 131.23,
+            "memory": 66.8,
+            "overhead": null,
+            "speedup": 1,
+            "reduction": 0
+          },
+          "detail": "Matched baseline",
+          "ours": false
+        },
+        {
+          "name": "FDM w/ VGM",
+          "family": "vgm",
+          "values": {
+            "latency": 253.45,
+            "step": 0.9729,
+            "throughput": 131.56,
+            "memory": 66.8,
+            "overhead": -0.26,
+            "speedup": 1.76,
+            "reduction": 43.24
+          },
+          "detail": "Our model",
+          "ours": true
+        }
+      ],
+      "insights": {
+        "latency": {
+          "vlm": "Inference latency stays comparable to π₀.₅.",
+          "vgm": "1.76× speedup; 43.24% lower latency than FastWAM-Joint."
+        },
+        "step": {
+          "vlm": "The paper reports 42.14% more training time per step.",
+          "vgm": "The paper reports 0.26% less training time per step."
+        },
+        "throughput": {
+          "vlm": "Future supervision reduces training throughput in the VLM comparison.",
+          "vgm": "Training throughput remains comparable to FastWAM-Joint."
+        },
+        "memory": {
+          "vlm": "Future supervision adds 4.96 GiB of peak memory per GPU.",
+          "vgm": "Both methods use 66.80 GiB of peak memory per GPU."
+        }
+      },
+      "tableMetrics": [
+        {
+          "key": "latency",
+          "label": "Inference latency",
+          "unit": "ms/chunk",
+          "digits": 2,
+          "max": 500,
+          "higher": false
+        },
+        {
+          "key": "step",
+          "label": "Training step time",
+          "unit": "s/step",
+          "digits": 4,
+          "max": 1,
+          "higher": false
+        },
+        {
+          "key": "throughput",
+          "label": "Training throughput",
+          "unit": "samples/s",
+          "digits": 2,
+          "max": 300,
+          "higher": true
+        },
+        {
+          "key": "memory",
+          "label": "Peak training memory",
+          "unit": "GiB/GPU",
+          "digits": 2,
+          "max": 80,
+          "higher": false
+        },
+        {
+          "key": "overhead",
+          "label": "Training overhead",
+          "unit": "%",
+          "digits": 2
+        },
+        {
+          "key": "speedup",
+          "label": "Inference speedup",
+          "unit": "×",
+          "digits": 2
+        },
+        {
+          "key": "reduction",
+          "label": "Latency reduction",
+          "unit": "%",
+          "digits": 2
+        }
+      ]
+    }
+  }
+}
