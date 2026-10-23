@@ -7,7 +7,7 @@
   <script>
     const path = window.location.pathname;
     const project = path.split("/")[1];
-    if (["SMR", "TIDE"].includes(project)) {
+    if (["SPAR", "ProphRL", "MoLA", "NavOL", "A2World", "TacPAC", "x-wbc", "FDM", "DAWN", "SMR", "TIDE"].includes(project)) {
       const destinationPath = path === "/" + project ? path + "/" : path;
       window.location.replace("https://logosintelligencelab.github.io" + destinationPath + window.location.search + window.location.hash);
     }
@@ -17,6 +17,15 @@
   <h1>Page not found</h1>
   <p>Project pages now hosted by Logos Intelligence Lab:</p>
   <ul>
+    <li><a href="https://logosintelligencelab.github.io/SPAR/">SPAR</a></li>
+    <li><a href="https://logosintelligencelab.github.io/ProphRL/">ProphRL</a></li>
+    <li><a href="https://logosintelligencelab.github.io/MoLA/">MoLA</a></li>
+    <li><a href="https://logosintelligencelab.github.io/NavOL/">NavOL</a></li>
+    <li><a href="https://logosintelligencelab.github.io/A2World/">A2World</a></li>
+    <li><a href="https://logosintelligencelab.github.io/TacPAC/">TacPAC</a></li>
+    <li><a href="https://logosintelligencelab.github.io/x-wbc/">x-wbc</a></li>
+    <li><a href="https://logosintelligencelab.github.io/FDM/">FDM</a></li>
+    <li><a href="https://logosintelligencelab.github.io/DAWN/">DAWN</a></li>
     <li><a href="https://logosintelligencelab.github.io/SMR/">SMR</a></li>
     <li><a href="https://logosintelligencelab.github.io/TIDE/">TIDE</a></li>
   </ul>
