@@ -6,13 +6,19 @@
   <title>Page not found | Logos Robotics Group</title>
   <script>
     const path = window.location.pathname;
-    if (path === "/SMR" || path.startsWith("/SMR/")) {
-      window.location.replace("https://logosintelligencelab.github.io/SMR/" + path.slice(5) + window.location.search + window.location.hash);
+    const project = path.split("/")[1];
+    if (["SMR", "TIDE"].includes(project)) {
+      const destinationPath = path === "/" + project ? path + "/" : path;
+      window.location.replace("https://logosintelligencelab.github.io" + destinationPath + window.location.search + window.location.hash);
     }
   </script>
 </head>
 <body>
   <h1>Page not found</h1>
-  <p>If you were looking for SMR, visit its <a href="https://logosintelligencelab.github.io/SMR/">new project page</a>.</p>
+  <p>Project pages now hosted by Logos Intelligence Lab:</p>
+  <ul>
+    <li><a href="https://logosintelligencelab.github.io/SMR/">SMR</a></li>
+    <li><a href="https://logosintelligencelab.github.io/TIDE/">TIDE</a></li>
+  </ul>
 </body>
 </html>
